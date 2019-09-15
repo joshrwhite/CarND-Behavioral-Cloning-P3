@@ -18,9 +18,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: https://github.com/white315/CarND-Behavioral-Cloning-P3/blob/master/images/NVIDIA_architecture.JPG "NVIDIA"
-[image2]: https://github.com/white315/CarND-Behavioral-Cloning-P3/blob/master/images/original_image.jpg "original"
-[image3]: https://github.com/white315/CarND-Behavioral-Cloning-P3/blob/master/images/cropped_image.jpg "cropped"
+[image1]: https://github.com/joshrwhite/CarND-Behavioral-Cloning-P3/blob/master/images/NVIDIA_architecture.JPG "NVIDIA"
+[image2]: https://github.com/joshrwhite/CarND-Behavioral-Cloning-P3/blob/master/images/original_image.jpg "original"
+[image3]: https://github.com/joshrwhite/CarND-Behavioral-Cloning-P3/blob/master/images/cropped_image.jpg "cropped"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
