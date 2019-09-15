@@ -73,9 +73,11 @@ Training data was chosen to keep the vehicle driving on the road. I used a combi
 I also cropped the image since the NVIDIA architecture supports an input shape of (66, 320, 3). So in line 117, I use 'model.add(Cropping2D(cropping=((70,25),(0,0))))' to crop 70 pixels from the top and 25 pixels from the bottom.
 
 Original Picture:
+
 ![original][image2]
 
 Cropped Picture:
+
 ![cropped][image3]
 
 ### Model Architecture and Training Strategy
