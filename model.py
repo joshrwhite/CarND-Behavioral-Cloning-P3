@@ -1,10 +1,9 @@
 from keras.models import Sequential, model_from_json
 from keras.layers.core import Dense, Activation, Flatten, Dropout, Lambda
 from keras.layers import Cropping2D
-from keras.layers.convolutional import Convolution2D, Conv2D
+from keras.layers.convolutional import Conv2D
 from keras.layers.pooling import MaxPooling2D
 from keras.layers.advanced_activations import ELU
-# from keras.regularizers import l2, activity_l2
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint, Callback
 from sklearn.model_selection import train_test_split
@@ -37,12 +36,12 @@ with open('./data/driving_log.csv') as csvfile: #currently after extracting the 
     for line in reader:
         samples.append(line)
 
-#code for generator
+# Code for Data Augmentation (Image Generator)
 def generator(samples, batch_size=32):
     num_samples = len(samples)
    
     while 1: 
-        shuffle(samples) #shuffling the total images
+        shuffle(samples) # Shuffling the total images
         for offset in range(0, num_samples, batch_size):
             
             batch_samples = samples[offset:offset+batch_size]
@@ -50,26 +49,26 @@ def generator(samples, batch_size=32):
             images = []
             angles = []
             for batch_sample in batch_samples:
-                for i in range(0,3): #we are taking 3 images, first one is center, second is left and third is right
+                for i in range(0,3): # Taking 3 images, first one is center, second is left, and third is right
                         
                     name = './data/data/IMG/'+batch_sample[i].split('/')[-1]
-                    center_image = cv2.cvtColor(cv2.imread(name), cv2.COLOR_BGR2RGB) #since CV2 reads an image in BGR we need to convert it to RGB since in drive.py it is RGB
-                    center_angle = float(batch_sample[3]) #getting the steering angle measurement
+                    center_image = cv2.cvtColor(cv2.imread(name), cv2.COLOR_BGR2RGB) # Since CV2 reads an image in BGR we need to convert it to RGB since in drive.py it is RGB
+                    center_angle = float(batch_sample[3]) # Getting the steering angle measurement
                     images.append(center_image)
                         
-                    # introducing correction for left and right images
-                    # if image is in left we increase the steering angle by 0.2
-                    # if image is in right we decrease the steering angle by 0.2
+                    # Introducing correction for left and right images
+                    # if using the left image (i == 1), then increase the steering angle by 0.2
+                    # if using the right image (i == 2), then decrease the steering angle by 0.2
                         
-                    if(i==0):
+                    if(i == 0):
                         angles.append(center_angle)
-                    elif(i==1):
-                        angles.append(center_angle+0.2)
-                    elif(i==2):
-                        angles.append(center_angle-0.2)
+                    elif(i == 1):
+                        angles.append(center_angle + 0.2)
+                    elif(i == 2):
+                        angles.append(center_angle - 0.2)
                         
-                    # Code for Augmentation of data.
-                    # We take the image and just flip it and negate the measurement
+                    # Code for Augmentation of data (6 augmented images per 1 source image)
+                    # We flip the image and mirror the associated steering angle measurement
                         
                     images.append(cv2.flip(center_image,1))
                     if(i==0):
@@ -78,13 +77,13 @@ def generator(samples, batch_size=32):
                         angles.append((center_angle+0.2)*-1)
                     elif(i==2):
                         angles.append((center_angle-0.2)*-1)
-                    #here we got 6 images from one image    
+                    # Here we can get 6 images from one image    
                         
         
             X_train = np.array(images)
             y_train = np.array(angles)
             
-            yield sklearn.utils.shuffle(X_train, y_train) #here we do not hold the values of X_train and y_train instead we yield the values which means we hold until the generator is running
+            yield sklearn.utils.shuffle(X_train, y_train) # Here we do not hold the values of X_train and y_train instead we yield the values meaning we hold until generator() is running
 
 ### Main Program ###
 
