@@ -84,9 +84,9 @@ Cropped Picture:
 
 The overall strategy for deriving a model architecture was to follow the videos to see if I could replicate what was happening on my own and then seek out other architecture and compiling methods for the best autonomous drive.
 
-After getting a good response from initial attempts, my first step was to use a convolution neural network model similar to the NVIDIA approach because the Udacity team and other classmates havefound luck with this approach. I also added a plethora of ELU activations due to some other suggestions by colleagues.
+After getting a good response from initial attempts, my first step was to use a convolution neural network model similar to the NVIDIA approach because the Udacity team and other classmates have found luck with this architecture. I also added a plethora of ELU activations due to some other suggestions by colleagues.
 
-To combat the overfitting, I modified the model so that I could 1) generate some of my own data and use it in the training process and 2) use the `model.fit_generator()` command to try out (even if it took longer for each epoch.
+To combat the overfitting, I modified the model so that I could 1) generate some of my own data and use it in the training process and 2) use the `model.fit_generator()` command to try out (even if it took longer for each epoch).
 
 The final step was to run the simulator to see how well the car was driving around track one. Even though the steering was shaky, and not as smooth as I'd like it to be, I got a successful lap around the track.
 
@@ -94,7 +94,7 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 #### 2. Final Model Architecture
 
-The final model architecture (model.py lines 115-140) consisted of a convolution neural network with the following layers and layer sizes (see the below visualization of the architecture):
+The final model architecture (model.py lines 115-140) consisted of a Convolutional Neural Network with the following layers and layer sizes (see the below visualization of the architecture):
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -129,7 +129,7 @@ To augment the data sat, I also flipped images and angles so that, for every one
 
 I finally randomly shuffled the data set and put 15% of the data into a validation set. 
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The number of epochs I used was 5 since the Udacity videos usually found their way to 5 epochs eventually and I didn't have time for the `model.fit()` function to go through any more epochs. I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over- or under- fitting. The number of epochs I used was 5 since the Udacity videos usually found their way to 5 epochs eventually and I didn't have time for the `model.fit()` function to go through any more epochs. I used an adam optimizer so that manually training the learning rate wasn't necessary.
 
 ### Output Video
 
