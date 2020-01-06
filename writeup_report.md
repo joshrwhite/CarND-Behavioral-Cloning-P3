@@ -52,7 +52,7 @@ My model is based on NVIDIA's architecture based on the recommendation of Udacit
 
 ![NVIDIA][image1]
 
-The model includes RELU/ELU layers to introduce nonlinearity between each Convultional and Dense layer, and the data is normalized in the model using a Keras lambda layer (code line 116). 
+The model includes RELU/ELU layers to introduce nonlinearity between each Convolutional and Dense layer, and the data is normalized in the model using a Keras lambda layer (code line 116). 
 
 #### 2. Attempts to reduce overfitting in the model
 
