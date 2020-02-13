@@ -133,4 +133,4 @@ I used this training data for training the model. The validation set helped dete
 
 ### Output Video
 
-You can find video of the autonomous lap through this [YouTube link](https://www.youtube.com/watch?v=bJARWhyIkRM&feature=youtu.be)
+You can find video of the autonomous lap through this [YouTube link](https://www.youtube.com/watch?v=chHmYnnUeAI)
